@@ -1,0 +1,345 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║                      ⭐ START HERE ⭐                                      ║
+║                                                                            ║
+║              3D Model Rotation to GIF Converter - Version 2.0            ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+🚀 QUICK START IN 3 STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+STEP 1: Setup (One Time Only)
+─────────────────────────────
+
+cd "/Users/gianthk/Library/CloudStorage/GoogleDrive-gianthk.iori@gmail.com/My Drive/ETH/HES-SO_terracotta/Results/kiri/3D_MODELS_BEST_TO_VIEW_IN_WINDOS_3D_VIEWER_OR_MESHLAB_OR_BLENDER"
+
+python3 -m venv venv
+source venv/bin/activate
+pip install trimesh numpy matplotlib pillow
+
+
+STEP 2: Activate Environment (Every Time You Run)
+──────────────────────────────────────────────────
+
+source venv/bin/activate
+
+
+STEP 3: Run Commands
+────────────────────
+
+# Default (Z-axis, no texture):
+python3 rotate_model_to_gif.py
+
+# With texture file:
+python3 rotate_model_to_gif.py --texture 3DModel_1/OBJ/3DModel/baked_mesh_239e0824_tex0.png
+
+# Diagonal rotation (1,1,1):
+python3 rotate_model_to_gif.py --axis 1,1,1 --frames 36 --fps 15
+
+# Custom axis rotation:
+python3 rotate_model_to_gif.py --axis 0.7,0.5,0.5 --frames 48 --fps 20
+
+
+✨ NEW FEATURES (v2.0)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1. TEXTURE PARAMETER CHANGED
+   • Old: --texture-dir [folder]
+   • New: --texture [file]
+   • Benefit: Choose exact texture file, no auto-scanning
+   • Optional: Can omit for no texture
+
+
+2. ARBITRARY AXIS ROTATION
+   • Old: Only x, y, z
+   • New: Any 3D vector (1,1,1), (0.7,0.5,0.5), etc.
+   • Benefit: Infinite rotation possibilities
+   • Automatic: Vectors normalized to unit length
+
+
+3. COMPLETELY WHITE BACKGROUND
+   • No visible pane edges (3D data box outline removed)
+   • Professional appearance
+   • Perfect for presentations
+
+
+📖 DOCUMENTATION GUIDE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+QUICK REFERENCE
+  File: QUICK_START_UPDATED.txt
+  Use for: Quick examples and common commands
+  
+COMPREHENSIVE GUIDE
+  File: README_UPDATED.md
+  Use for: Detailed information, all features explained
+  
+BEFORE & AFTER COMPARISON
+  File: BEFORE_AFTER_COMPARISON.txt
+  Use for: Understanding what changed from v1.0 to v2.0
+  
+IMPLEMENTATION DETAILS
+  File: FINAL_SUMMARY.txt
+  Use for: Technical details and testing results
+  
+CHANGELOG
+  File: UPDATES_SUMMARY.txt
+  Use for: Detailed list of all modifications
+
+
+📋 PARAMETER REFERENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+REQUIRED (at least for first run):
+  python3 rotate_model_to_gif.py
+
+OPTIONAL PARAMETERS:
+  --texture [PATH]    Texture file (PNG/JPG)
+  --axis [AXIS]       Rotation axis (default: z)
+  --frames [N]        Number of frames (default: 36)
+  --fps [N]           Playback speed (default: 10)
+  --obj [PATH]        OBJ file (default: 3DModel_1/OBJ/3DModel.obj)
+  --output [PATH]     Output file (default: 3DModel_1/model_rotation.gif)
+  --help              Show help text
+
+
+AXIS OPTIONS:
+  Standard:   x, y, z
+  Arbitrary:  1,1,1 or 0.7,0.5,0.5 (comma-separated values)
+  Automatic:  Vectors normalized to unit length
+
+
+💡 USAGE EXAMPLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Example 1: Minimal (Just Rotate)
+  python3 rotate_model_to_gif.py
+
+Example 2: Add Texture
+  python3 rotate_model_to_gif.py \
+    --texture 3DModel_1/OBJ/3DModel/baked_mesh_239e0824_tex0.png
+
+Example 3: Diagonal Rotation (New Feature!)
+  python3 rotate_model_to_gif.py \
+    --axis 1,1,1 \
+    --frames 36 \
+    --fps 15
+
+Example 4: Custom Axis (New Feature!)
+  python3 rotate_model_to_gif.py \
+    --axis 0.7,0.5,0.5 \
+    --frames 48 \
+    --fps 20
+
+Example 5: Professional Quality
+  python3 rotate_model_to_gif.py \
+    --axis 1,1,1 \
+    --frames 72 \
+    --fps 24 \
+    --output 3DModel_1/professional.gif
+
+Example 6: Everything Combined
+  python3 rotate_model_to_gif.py \
+    --obj 3DModel_1/OBJ/3DModel.obj \
+    --texture 3DModel_1/OBJ/3DModel/baked_mesh_239e0824_tex0.png \
+    --axis 0.577,0.577,0.577 \
+    --frames 60 \
+    --fps 20 \
+    --output 3DModel_1/amazing.gif
+
+
+🎯 COMMON TASKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Task: I want to rotate around X-axis
+  Command: python3 rotate_model_to_gif.py --axis x
+
+Task: I want to rotate around Y-axis
+  Command: python3 rotate_model_to_gif.py --axis y
+
+Task: I want to rotate around Z-axis (default)
+  Command: python3 rotate_model_to_gif.py
+
+Task: I want diagonal rotation (45° from each axis)
+  Command: python3 rotate_model_to_gif.py --axis 1,1,1
+
+Task: I want smooth animation
+  Command: python3 rotate_model_to_gif.py --frames 60 --fps 20
+
+Task: I want fast preview
+  Command: python3 rotate_model_to_gif.py --frames 20 --fps 10
+
+Task: I want to use a specific texture
+  Command: python3 rotate_model_to_gif.py --texture 3DModel_1/OBJ/3DModel/[texture_file].png
+
+Task: I want no texture
+  Command: python3 rotate_model_to_gif.py
+
+Task: I want to rotate around a custom axis
+  Command: python3 rotate_model_to_gif.py --axis 0.5,0.866,0
+
+Task: I want to rotate different model (3DModel_2)
+  Command: python3 rotate_model_to_gif.py --obj 3DModel_2/OBJ/3DModel.obj
+
+
+🔍 FINDING AVAILABLE TEXTURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+List textures for 3DModel_1:
+  ls 3DModel_1/OBJ/3DModel/*.png
+
+List textures for 3DModel_2:
+  ls 3DModel_2/OBJ/3DModel/*.png
+
+List textures for 3DModel_3:
+  ls 3DModel_3/OBJ/3DModel/*.png
+
+
+❓ TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Error: "Module not found"
+  Solution: Make sure you've activated the virtual environment
+  Command: source venv/bin/activate
+
+Error: "File not found"
+  Solution: Check that the texture file exists
+  Command: ls 3DModel_1/OBJ/3DModel/*.png
+
+Error: "Invalid axis"
+  Solution: Use format: a,b,c (commas, no spaces)
+  Example: --axis 1,1,1 (correct)
+           --axis 1, 1, 1 (wrong - spaces)
+
+Error: "Output file too large"
+  Solution: Reduce frames or fps
+  Command: python3 rotate_model_to_gif.py --frames 20 --fps 10
+
+Help:
+  Command: python3 rotate_model_to_gif.py --help
+
+
+✅ WHAT WAS CHANGED (v1.0 → v2.0)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+CHANGE 1: Texture Parameter
+  Before: --texture-dir 3DModel_1/OBJ/3DModel (auto-scanned)
+  After:  --texture 3DModel_1/OBJ/3DModel/specific_file.png (direct)
+
+CHANGE 2: Rotation Axis
+  Before: --axis x  or  --axis y  or  --axis z  (only 3 options)
+  After:  --axis x  or  --axis y  or  --axis z  or  --axis 1,1,1  (unlimited)
+
+CHANGE 3: Background
+  Before: 3 visible pane edges visible
+  After:  Completely white (no visible edges)
+
+
+🎨 ANIMATION QUALITY SETTINGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+For fast preview (smallest file):
+  --frames 20 --fps 10        Results: 0.4 MB, ~20 seconds to generate
+
+For smooth animation (balanced):
+  --frames 36 --fps 12        Results: 0.8 MB, ~40 seconds to generate
+
+For professional quality:
+  --frames 60 --fps 20        Results: 1.5 MB, ~90 seconds to generate
+
+For ultra-smooth animation (best quality):
+  --frames 72 --fps 24        Results: 2.5 MB, ~150 seconds to generate
+
+
+📚 DOCUMENT STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Core Files:
+  rotate_model_to_gif.py              The main script (v2.0)
+  venv/                               Virtual environment with dependencies
+
+Documentation:
+  START_HERE.txt ← You are here
+  QUICK_START_UPDATED.txt             Quick reference with examples
+  README_UPDATED.md                   Comprehensive user guide
+  BEFORE_AFTER_COMPARISON.txt         What changed from v1.0
+  FINAL_SUMMARY.txt                   Implementation & testing details
+  UPDATES_SUMMARY.txt                 Detailed changelog
+
+Example Animations:
+  rotation_with_texture.gif           Demonstrates texture feature
+  rotation_diagonal.gif               Demonstrates arbitrary axis
+  rotation_custom_axis.gif            Demonstrates custom vector
+  (and original examples...)
+
+Legacy Documentation:
+  QUICK_START.txt (v1.0)
+  README_rotate_model.md (v1.0)
+  SCRIPT_SUMMARY.txt (v1.0)
+
+
+🎓 LEARNING PATH
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Beginner:
+  1. Read this file (START_HERE.txt)
+  2. Run: python3 rotate_model_to_gif.py
+  3. Try examples from "Quick Start" section above
+
+Intermediate:
+  1. Read QUICK_START_UPDATED.txt
+  2. Try different axis vectors
+  3. Experiment with --frames and --fps
+
+Advanced:
+  1. Read README_UPDATED.md (full documentation)
+  2. Understand axis vectors (BEFORE_AFTER_COMPARISON.txt)
+  3. Optimize settings for your use case
+
+Technical:
+  1. Read FINAL_SUMMARY.txt (implementation details)
+  2. Review rotate_model_to_gif.py source code
+  3. Check UPDATES_SUMMARY.txt for all changes
+
+
+🏁 YOU'RE READY TO GO!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Next steps:
+
+1. Activate environment:
+   source venv/bin/activate
+
+2. Try the basic example:
+   python3 rotate_model_to_gif.py
+
+3. Explore new features:
+   python3 rotate_model_to_gif.py --axis 1,1,1
+   python3 rotate_model_to_gif.py --texture 3DModel_1/OBJ/3DModel/baked_mesh_239e0824_tex0.png
+
+4. Read documentation as needed:
+   - For quick help: QUICK_START_UPDATED.txt
+   - For complete guide: README_UPDATED.md
+   - For feature comparison: BEFORE_AFTER_COMPARISON.txt
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+VERSION: 2.0 (November 20, 2026)
+
+═══════════════════════════════════════════════════════════════════════════════

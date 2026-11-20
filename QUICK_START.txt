@@ -1,0 +1,191 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                 3D MODEL ROTATION TO GIF - UPDATED QUICK START             ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+NEW FEATURES (November 20, 2026)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ --texture now accepts individual texture files (not folders)
+✓ --axis now supports arbitrary 3D vectors (e.g., 1,1,1 or 0.7,0.5,0.5)
+✓ Background is now completely white (all pane edges removed)
+
+
+SETUP (One-time only)
+━━━━━━━━━━━━━━━━━━━━
+cd "/Users/gianthk/Library/CloudStorage/GoogleDrive-gianthk.iori@gmail.com/My Drive/ETH/HES-SO_terracotta/Results/kiri/3D_MODELS_BEST_TO_VIEW_IN_WINDOS_3D_VIEWER_OR_MESHLAB_OR_BLENDER"
+python3 -m venv venv
+source venv/bin/activate
+pip install trimesh numpy matplotlib pillow
+
+
+RUN (Every time)
+━━━━━━━━━━━━━━━
+source venv/bin/activate
+python3 rotate_model_to_gif.py [OPTIONS]
+
+
+COMMON EXAMPLES
+━━━━━━━━━━━━━━━
+
+1. Default (Z-axis, no texture):
+   python3 rotate_model_to_gif.py
+
+2. With specific texture file:
+   python3 rotate_model_to_gif.py --texture 3DModel_1/OBJ/3DModel/baked_mesh_239e0824_tex0.png
+
+3. Rotate around X-axis:
+   python3 rotate_model_to_gif.py --axis x
+
+4. Rotate around Y-axis:
+   python3 rotate_model_to_gif.py --axis y
+
+5. Diagonal rotation (1,1,1):
+   python3 rotate_model_to_gif.py --axis 1,1,1 --frames 36 --fps 15
+
+6. Custom axis vector (normalized automatically):
+   python3 rotate_model_to_gif.py --axis 0.7,0.5,0.5 --frames 48 --fps 20
+
+7. 45° between X and Y (no Z):
+   python3 rotate_model_to_gif.py --axis 1,1,0
+
+8. High quality with custom axis:
+   python3 rotate_model_to_gif.py --axis 1,1,1 --frames 72 --fps 24 --output 3DModel_1/hq.gif
+
+9. Fast preview:
+   python3 rotate_model_to_gif.py --frames 24 --fps 10
+
+10. Full customization:
+    python3 rotate_model_to_gif.py \
+      --obj 3DModel_1/OBJ/3DModel.obj \
+      --texture 3DModel_1/OBJ/3DModel/baked_mesh_239e0824_tex0.png \
+      --axis 0.577,0.577,0.577 \
+      --frames 48 \
+      --fps 20 \
+      --output 3DModel_1/custom.gif
+
+
+PARAMETER QUICK REFERENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━
+--obj PATH              OBJ file path (default: 3DModel_1/OBJ/3DModel.obj)
+--texture PATH          Texture file (PNG/JPG). Optional. e.g., 3DModel/tex.png
+--output PATH           Output file (default: 3DModel_1/model_rotation.gif)
+--axis AXIS             Rotation axis. See AXIS FORMATS below
+--frames N              Number of frames (default: 36) - higher = smoother
+--fps N                 Playback speed (default: 10)
+
+
+AXIS FORMATS
+━━━━━━━━━━━━
+Standard axes (single letter):
+  --axis x              Rotate around X axis
+  --axis y              Rotate around Y axis
+  --axis z              Rotate around Z axis (DEFAULT)
+
+Arbitrary vectors (automatically normalized):
+  --axis 1,1,1          Diagonal through all axes (45° from each)
+  --axis 1,0,0          Equivalent to --axis x
+  --axis 1,1,0          45° between X and Y, no Z tilt
+  --axis 0.7,0.5,0.5    Mostly X rotation with mixed Y and Z
+  --axis 0,1,0.5        Mostly Y rotation, some Z tilt
+
+
+AXIS VECTOR GUIDE
+━━━━━━━━━━━━━━━━━
+Vertical spin (like carousel):
+  --axis 0,1,0          or  --axis y
+
+Horizontal rotation (turntable):
+  --axis 0,0,1          or  --axis z (DEFAULT)
+
+Forward roll (like wheel):
+  --axis 1,0,0          or  --axis x
+
+Diagonal (show all 3D):
+  --axis 1,1,1          Balanced 3D rotation
+
+Mixed rotations:
+  --axis 1,1,0          XY plane, 45° angle
+  --axis 1,0,1          XZ plane, 45° angle
+  --axis 0.5,1,0.5      Mostly Y, some X and Z
+
+
+TEXTURE FILE EXAMPLES
+━━━━━━━━━━━━━━━━━━━━
+List available textures:
+  ls 3DModel_1/OBJ/3DModel/*.png
+
+Use specific texture:
+  --texture 3DModel_1/OBJ/3DModel/baked_mesh_239e0824_tex0.png
+  --texture 3DModel_2/OBJ/3DModel/baked_mesh_4aa3f029_norm0.png
+  --texture 3DModel_3/OBJ/3DModel/baked_mesh_1e366dda_ao0.png
+
+
+PERFORMANCE GUIDE
+━━━━━━━━━━━━━━━━
+Fast preview (20 seconds, 0.4 MB):
+  --frames 20 --fps 10
+
+Smooth animation (45 seconds, 0.8 MB):
+  --frames 36 --fps 12
+
+Professional quality (90 seconds, 1.5 MB):
+  --frames 60 --fps 20
+
+Ultra-smooth (150 seconds, 2.5 MB):
+  --frames 72 --fps 24
+
+
+BACKGROUND QUALITY
+━━━━━━━━━━━━━━━━━
+✓ Completely white background
+✓ No visible axes or grid lines
+✓ No pane edges (clean professional look)
+✓ Perfect for presentations and documentation
+
+
+TROUBLESHOOTING
+━━━━━━━━━━━━━━━
+Module not found?
+  → source venv/bin/activate
+
+File not found?
+  → ls 3DModel_1/OBJ/3DModel.obj
+  → ls 3DModel_1/OBJ/3DModel/*.png
+
+Invalid axis error?
+  → Use format: --axis x,y,z  (commas, no spaces)
+  → Example: --axis 1,1,1
+
+Need help?
+  → python3 rotate_model_to_gif.py --help
+
+
+EXAMPLES WITH ACTUAL PATHS
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+See all available texture files:
+  ls 3DModel_1/OBJ/3DModel/
+
+Create animation with specific texture:
+  python3 rotate_model_to_gif.py \
+    --texture 3DModel_1/OBJ/3DModel/baked_mesh_239e0824_tex0.png \
+    --axis 1,1,1 \
+    --frames 48 \
+    --fps 15 \
+    --output 3DModel_1/animation_with_texture.gif
+
+Process different model:
+  python3 rotate_model_to_gif.py \
+    --obj 3DModel_2/OBJ/3DModel.obj \
+    --texture 3DModel_2/OBJ/3DModel/baked_mesh_4aa3f029_tex0.png
+
+
+RECENT TEST RESULTS
+━━━━━━━━━━━━━━━━━━
+✓ Z-axis with texture         459 KB  20 frames @ 12 fps
+✓ Diagonal axis (1,1,1)       470 KB  24 frames @ 12 fps
+✓ Custom axis (0.7,0.5,0.5)   496 KB  24 frames @ 12 fps
+✓ All backgrounds completely white - no visible pane edges!
+
+
+FOR DETAILED INFORMATION
+━━━━━━━━━━━━━━━━━━━━━━━
+See README_UPDATED.md for comprehensive documentation
